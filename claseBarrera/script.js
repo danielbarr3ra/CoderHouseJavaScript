@@ -1,68 +1,67 @@
+class Runner {
+    constructor(name, gender, age) {
+        this.name = name;
+        this.gender = gender;
+        this.age = age;
+        this.personalRecords = [];
+        this.vo2Max = [];
+    }
 
-let start = prompt("do you want to find out your vow max? (yes,no)")
+    maxHearRate() {
+        this.maxHR = 208 - 0.7 * this.age;
+    }
+    VO2() {
+        for (const race of this.personalRecords) {
+            this.vo2Max.push(race.vo2 / race.percentMax);
+        }
+        const averageVO2 = this.vo2Max.reduce((a, b) => a + b, 0) / this.vo2Max.length;
+        console.log(averageVO2);
+        return averageVO2;
+    }
+}
+//race object to push in the times
+class Race {
+    constructor(raceDistance, timeMinutes) {
+        this.raceDistance = raceDistance;
+        this.timeMinutes = timeMinutes;
+        this.velocity();
+        this.percentMax();
+        this.vo2();
+    }
+
+    velocity() {
+        this.velocity = this.raceDistance / this.timeMinutes;
+    }
+    percentMax() {
+        this.percentMax = 0.8 + 0.1894393 * Math.exp(-0.012778 * this.timeMinutes) + 0.2989558 * Math.exp(-0.1932605 * this.timeMinutes);
+    }
+    vo2() {
+        this.vo2 = -4.60 + 0.182258 * this.velocity + 0.000104 * this.velocity * this.velocity;
+    }
+}
+
+
+let start = prompt("do you want to find out your vow max? (yes,no)");
+let costumer;
+if (start == "yes") {
+    let name = prompt("awesome lets get some info first, whats your name");
+    let gender = prompt("whats your gender");
+    let age = parseInt(prompt("and age?"));
+    costumer = new Runner(name, gender, age);
+    costumer.maxHearRate()
+    console.log(costumer.maxHR);
+    //the runner class is good;
+}
+start = prompt("awesome, lets get some informationa about your races in meter and minutes. Want to add a race?");
 while (start == "yes") {
-    let answer = parseInt(prompt("Chose one of the follwoning methods: resting (type 1), walk test (2), three minute test (3), 1.5 mile test (4)"));
-
-    switch (answer) {
-        case 1:
-            let age = parseInt(prompt("awesome first let me know your age:"))
-            let heart = parseInt(prompt("and your resting heartbeat, thank you!"))
-            let vo2 = restingHearBeat(age, heart)
-            alert(`nice your vo2 max is ${vo2}`)
-            break;
-        case 2:
-            let age2 = parseInt(prompt("awesome first let me know your age:"))
-            let weight = parseInt(prompt(" your weight in pounds"))
-            let gender = prompt("your gender (female or male)")
-            let time = parseInt(prompt("your finish time"));
-            let endHeart = parseInt(prompt("your final heart rate at the end of test"))
-            let vo22 = mileWalkTest(age2, weight, gender, time, endHeart)
-            alert(`nice your vo2 max is ${vo22}`)
-            break;
-        case 3:
-            let endHeart2 = parseInt(prompt("what is your heart rate at the end of test"))
-            let gender2 = prompt("what is your gender (female or male)");
-            let vo23 = threeMinuteStep(endHeart2, gender2);
-            alert(`nice your vo2 max is ${vo23}`)
-            break;
-        case 4:
-            let time3 = parseInt(prompt("what is your time in minuts for this test"));
-            let vo24 = oneFiveMile(time3);
-            alert(`nice your vo2 max is ${vo24}`)
-            break;
-    }
-
-    start = prompt("do you want to try another method?")
+    let distance = parseFloat(prompt("what is the disntace of the race?"));
+    let time = parseFloat(prompt("what is the time of the race in minutes"))
+    costumer.personalRecords.push(new Race(distance, time));
+    start = prompt("want to add another one?");
 }
+console.log(costumer.personalRecords);
+const answer = costumer.VO2();
+alert(`nice your vo2 max is ${answer}`);
 
 
-function restingHearBeat(age, resting) {
-    let maxHearRate = 208 - 0.7 * age
-    return 15.3 * (maxHearRate / resting)
-}
-
-function mileWalkTest(age, weight, gender, time, endHeart) {
-    let result = 0;
-    if (gender == "female") {
-        result = 132.853 - 0.0769 * weight - 0.3877 * age - 3.2649 * time - 0.1565 * endHeart
-    } else {
-        result = 132.853 - 0.0769 * weight - 0.3877 * age - 3.2649 * time - 0.1565 * endHeart
-    }
-
-    return result;
-}
-
-function threeMinuteStep(heartRate, gender) {
-    let result = 0;
-    if (gender == "female") {
-        result = 65.81 - 0.1847 * heartRate
-    } else {
-        result = 111.33 - 0.42 * heartRate
-    }
-    return result;
-}
-
-function oneFiveMile(time) {
-    return 483 / time + 3.5
-}
-
+//they are there in the console now we just need to do the the iteration and output the average.
