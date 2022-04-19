@@ -11,13 +11,14 @@
 </head>
 
 <body class=bg-red-200>
-    <div class="max-w-md py-4 px-8 bg-black shadow-lg shadow-red-500 rounded-lg my-20 ">
+    <div class="max-w-md py-4 px-8 bg-black shadow-lg shadow-red-500 rounded-lg my-20 " id="informationCard">
         <div class="flex justify-center md:justify-end -mt-16">
             <img class="w-20 h-20 object-cover rounded-full border-2 border-red-500" src="img/excersise.jpeg">
         </div>
         <div>
             <h1 class="text-white text-3xl font-semibold">What is VO2 Max?</h1>
-            <p class="mt-2 text-white">VO2 max is the amount (volume) of oxygen your body uses while exercising as
+            <p class="mt-2 text-white" id="informationParagraph">VO2 max is the amount (volume) of oxygen your body
+                uses while exercising as
                 hard as you can. It's a common tool to understand your fitness level. Knowing your VO2 max can help you
                 train for sports, track your fitness
                 improvement, and improve your heart health.</p>
@@ -26,6 +27,48 @@
             <a href="#" class="text-xl font-medium text-red-500">Daniel Barrera</a>
         </div>
     </div>
+
+    <div>
+        <div class='max-w-xs w-full bg-white shadow-md rounded-lg overflow-hidden mx-auto'>
+            <div class='h-2 w-full bg-gray-800'></div>
+            <div class='px-2 py-3'>
+                <div class='w-full text-center mb-3'>
+                    <img class='w-24 h-24 inline-block object-cover rounded-full' alt='CompanyIcon'
+                        src="img/racer.jpeg">
+                </div>
+                <div class='w-full text-center border-t mb-1 pb-3'>
+                    <h1 class="mt-2 text-xl font-bold" id="racersName">Racers name</h1>
+                    <p class="my-1 text-xs font-bold" id="racersInfo">Gender and age</p>
+                </div>
+                <table class="w-full border">
+                    <thead>
+                        <tr class="border-t-2 font-bold">
+                            <td class="p-2 border-r w-1/12"> race #</td>
+                            <td class="p-2 border-r w-6/12">distance (m)</td>
+                            <td class="p-2 border-r w-1/12">time</td>
+                            <td class="p-2 text-right w-4/12">Speed</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t text-sm">
+                            <td class="p-1 pl-2 border-r ">1</td>
+                            <td class="p-1 pl-2 border-r" id="racersDistance"> </td>
+                            <td class="p-1 pl-2 border-r" id="raceTime">1</td>
+                            <td class="p-1 text-right" id="speed">42.00 <small
+                                    class="font-bolder text-lg pr-2 text-gray-300">min/km</small></td>
+                    </tbody>
+                    <thead>
+                        <td class="p-2" colspan="2"></td>
+                        <td class="p-2 text-right border-r font-bold">VO2 Max</td>
+                        <td class="p-1 text-right" id="vomax">15</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
     <script src="./script.js"></script>
 </body>
 

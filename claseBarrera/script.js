@@ -59,9 +59,25 @@ while (start == "yes") {
     costumer.personalRecords.push(new Race(distance, time));
     start = prompt("want to add another one?");
 }
+
 console.log(costumer.personalRecords);
+
 const answer = costumer.VO2();
 alert(`nice your vo2 max is ${answer}`);
 
+//updatet the info in the otehr card
 
-//they are there in the console now we just need to do the the iteration and output the average.
+let racersName = document.getElementById("racersName")
+let racersInfo = document.getElementById("racersInfo")
+racersName.innerText = costumer.name;
+racersInfo.innerText = costumer.age + " years old | " + costumer.gender;
+
+let racersDistance = document.getElementById("racersDistance");
+let raceTime = document.getElementById("raceTime");
+let speed = document.getElementById("speed");
+let vomax = document.getElementById("vomax");
+
+racersDistance.innerText = costumer.personalRecords[0].raceDistance;
+raceTime.innerText = costumer.personalRecords[0].timeMinutes;
+speed.innerText = costumer.personalRecords[0].velocity;
+vomax.innerText = Math.round(costumer.VO2());
