@@ -43,6 +43,7 @@ class Race {
 
 
 const formDetails = document.getElementById("information");
+const gaugeElement = document.querySelector(".gauge");
 
 formDetails.addEventListener("submit", async (event) => {
     event.preventDefault(); //this funciton prevent the default information from submitting;
@@ -60,5 +61,21 @@ formDetails.addEventListener("submit", async (event) => {
 
 function updateHTML(voMax) {
     const newDiv = document.getElementById("resutls")
-    newDiv.innerHTML = `<h1>your vo2 max is ${Math.round(voMax)}</h1>`;
+    newDiv.innerHTML = `<h1>your vo2 max is ${Math.round(voMax)} ml/kg3</h1>`;
+    setGaugeValue(gaugeElement, voMax / 95);
 }
+
+
+function setGaugeValue(gauge, value) {
+    if (value < 0 || value > 1) {
+        return;
+    }
+
+    gauge.querySelector(".gauge__fill").style.transform = `rotate(${value / 2
+        }turn)`;
+    gauge.querySelector(".gauge__cover").textContent = `${Math.round(
+        value * 100
+    )}%`;
+}
+
+setGaugeValue(gaugeElement, 0.3);
