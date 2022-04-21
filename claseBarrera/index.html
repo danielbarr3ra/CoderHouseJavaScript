@@ -28,94 +28,27 @@
         </div>
     </div>
 
-    <form class="w-full max-w-lg">
-        <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
-                    Athletes Name
-                </label>
-                <input
-                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    id="grid-first-name" type="text" placeholder="Jane">
-                <p class="text-red-500 text-xs italic">Athletes Name</p>
-            </div>
-            <div class="w-full md:w-1/4 px-3">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-gender">
-                    Gender
-                </label>
-                <select
-                    class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                    <option>Male</option>
-                    <option>Female</option>
-                </select>
-                <p class="text-red-500 text-xs italic">Gender helps accuracy</p>
-            </div>
-            <div class="w-full md:w-1/4 px-3">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-age">
-                    Age
-                </label>
-                <input
-                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    id="grid-first-name" type="number" placeholder="21">
-                <p class="text-red-500 text-xs italic">Your current age</p>
-            </div>
-            <div class="w-full md:w-2/3 px-3">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                    for="grid-race-distance-1">
-                    Race 1
-                </label>
-                <select
-                    class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                    <option>Mile</option>
-                    <option>5k</option>
-                    <option>10k</option>
-                    <option>Half Marathon</option>
-                    <option>Marathon</option>
-                </select>
-                <p class="text-red-500 text-xs italic">Distance of your race</p>
-            </div>
-            <div class="w-full md:w-1/3 px-3">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-racetime-1">
-                    Time in Minutes
-                </label>
-                <input
-                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    id="grid-first-name" type="number" placeholder="21">
-                <p class="text-red-500 text-xs italic">Racing Time</p>
-            </div>
-            <div class="w-full md:w-2/3 px-3">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                    for="grid-race-distance-2">
-                    Race 2
-                </label>
-                <select
-                    class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
-                    <option>Mile</option>
-                    <option>5k</option>
-                    <option>10k</option>
-                    <option>Half Marathon</option>
-                    <option>Marathon</option>
-                </select>
-                <p class="text-red-500 text-xs italic">Distance of your race</p>
-            </div>
-            <div class="w-full md:w-1/3 px-3">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-racetime-2">
-                    Time in Minutes
-                </label>
-                <input
-                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                    id="grid-first-name" type="number" placeholder="21">
-                <p class="text-red-500 text-xs italic">Racing Time</p>
-            </div>
-        </div>
-        <div class="flex items-center justify-between">
-            <button
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                type="button">
-                Submit
-            </button>
+    <form id="information">
+        FirstName:
+        <label><input type="text" id="athletesName" /> </label>
+        Gender:
+        <label><input type="text" id="athletesGender" /> </label>
+        Age:
+        <label><input type="text" id="athletesAge" /> </label>
+        Distance:
+        <label><input type="text" id="raceDistance" /> </label>
+        Time:
+        <label><input type="text" id="raceTime" /> </label>
+        <input type="submit">
     </form>
+
+    <div id="resutls">
+    </div>
+
+
+
     <!--<script src="./script.js"></script>-->
+    <script src="script.js"></script>
 
 </body>
 
