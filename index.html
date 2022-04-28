@@ -5,18 +5,24 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./styles/style.css">
     <title>Racers Compare</title>
 </head>
 
-<body>
-    <header>
+<body class="mainPage">
+    <header class="leaderboard header">
         <h1>A local leaderboard</h1>
-        <p>navigation here</p>
+        <p>Want to be competitive? join our leader board and compare your monthly milage with the community </p>
     </header>
+    <div form-hub>
 
-    <div class="submission">
         <form id="racerForm">
+            <h1>Add a Runner or Yourself</h1>
             <label for="name">Racer's Name:</label>
             <input type="text" id="name" name="name">
             <br>
@@ -34,8 +40,8 @@
             <br>
             <input type="submit" value="Submit" id="submit-racer">
         </form>
-    </div>
-    <div class="submission">
+
+
         <form id="updateRaceForm">
             <h1>Update a race</h1>
             <label for="updateRace">What is the racersID</label>
@@ -48,6 +54,7 @@
             <input type="submit" value="Submit" id="submit-newRace">
         </form>
     </div>
+
 
     <div id="leaderboard">
         <h1>The leaderBoard of memeber is here</h1>

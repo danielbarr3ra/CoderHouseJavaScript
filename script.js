@@ -92,6 +92,6 @@ function createRunner() {
 
 function dsiplayLeaderBoard() {
     let formatedTable = "";
-    global.members.forEach((runner) => formatedTable += '<tr><td>' + runner.name + '</td><td>' + runner.totalDistance + '</td><td>' + '</td><td>' + runner.id + '</td></tr>');
+    global.members.forEach((runner) => formatedTable += '<tr><td>' + runner.name + '</td><td>' + runner.totalDistance + '</td><td>' + runner.id + '</td></tr>');
     document.getElementById("listOfRacers").innerHTML = formatedTable
 }

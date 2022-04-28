@@ -1,48 +1,36 @@
-.gauge {
-    width: 100%;
-    max-width: 250px;
-    font-family: "Roboto", sans-serif;
-    font-size: 32px;
-    color: #004033;
+.mainPage {
+    background: rgb(63, 94, 251);
+    background: -moz-radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+    background: -webkit-radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3f5efb", endColorstr="#fc466b", GradientType=1);
 }
 
-.gauge__body {
-    width: 100%;
-    height: 0;
-    padding-bottom: 50%;
-    background: #b4c0be;
-    position: relative;
-    border-top-left-radius: 100% 200%;
-    border-top-right-radius: 100% 200%;
-    overflow: hidden;
-}
-
-.gauge__fill {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: inherit;
-    height: 100%;
-    background: #009578;
-    transform-origin: center top;
-    transform: rotate(0.25turn);
-    transition: transform 0.2s ease-out;
-}
-
-.gauge__cover {
-    width: 75%;
-    height: 150%;
-    background: #ffffff;
-    border-radius: 50%;
-    position: absolute;
-    top: 25%;
-    left: 50%;
-    transform: translateX(-50%);
-
-    /* Text */
+.form-hub {
     display: flex;
-    align-items: center;
     justify-content: center;
-    padding-bottom: 25%;
-    box-sizing: border-box;
+    align-items: center;
+}
+
+form {
+    background: rgba(255, 255, 255, 0.137);
+    padding: 1.5em;
+    border-radius: 20px;
+    border-left: 1px solid white;
+    border-top: 1px solid white;
+    backdrop-filter: blur(10px);
+    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+}
+
+form label {
+    font-family: 'Roboto', sans-serif;
+    color: white;
+}
+
+
+h1 {
+    font-family: 'Roboto', sans-serif;
 }
