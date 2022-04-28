@@ -9,6 +9,16 @@ class Runner {
     }
     addRace(Race) {
         this.races.push(Race);
+        this.totalDistance();
+    }
+    totalDistance() {
+        let initial = 0;
+        if (this.races.length > 1) {
+            this.totalDistance = this.races.reduce((prev, curr) => prev.distance + curr.distance, 0)
+        } else {
+            this.totalDistance = this.races[0].distance;
+        }
+
     }
 }
 
@@ -43,6 +53,8 @@ const global = new LeaderBoard();
 
 const userForm = document.getElementById("racerForm");
 
+
+//events
 userForm.addEventListener("submit", (e) => {
     e.preventDefault();
     global.addMember(createRunner());
@@ -51,6 +63,9 @@ userForm.addEventListener("submit", (e) => {
     localStorage.setItem('global', JSON.stringify(global));
 })
 
+
+
+// functions for events;
 function createRunner() {
     let aRace = new Race(userForm.elements['distance'].value, userForm.elements['time'].value);
 
@@ -64,6 +79,6 @@ function createRunner() {
 
 function dsiplayLeaderBoard() {
     let formatedTable = "";
-    global.members.forEach((runner) => formatedTable += '<tr><td>' + runner.name + '</td><td>' + runner.age + '</td></tr>');
+    global.members.forEach((runner) => formatedTable += '<tr><td>' + runner.name + '</td><td>' + runner.totalDistance + '</td></tr>');
     document.getElementById("listOfRacers").innerHTML = formatedTable
 }
