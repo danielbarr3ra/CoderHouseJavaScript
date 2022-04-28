@@ -5,6 +5,7 @@ class Runner {
         this.age = age;
         this.personalRecords = [];
         this.vo2Max = [];
+        this.maxHearRate()
     }
 
     maxHearRate() {
@@ -41,43 +42,40 @@ class Race {
 }
 
 
-let start = prompt("do you want to find out your vow max? (yes,no)");
-let costumer;
-if (start == "yes") {
-    let name = prompt("awesome lets get some info first, whats your name");
-    let gender = prompt("whats your gender");
-    let age = parseInt(prompt("and age?"));
-    costumer = new Runner(name, gender, age);
-    costumer.maxHearRate()
-    console.log(costumer.maxHR);
-    //the runner class is good;
+const formDetails = document.getElementById("information");
+const gaugeElement = document.querySelector(".gauge");
+
+formDetails.addEventListener("submit", async (event) => {
+    event.preventDefault(); //this funciton prevent the default information from submitting;
+    let aRunner = new Runner(formDetails['athletesName'].value, formDetails['athletesGender'].value, formDetails['athletesAge'].value);
+
+    let aRace = new Race(formDetails['raceDistance'].value, formDetails['raceTime'].value);
+
+    aRunner.personalRecords.push(aRace);
+    console.log(aRace)
+    console.log(aRunner)
+    console.log(aRunner.VO2());
+    updateHTML(aRunner.VO2());
+
+});
+
+function updateHTML(voMax) {
+    const newDiv = document.getElementById("resutls")
+    newDiv.innerHTML = `<h1>your vo2 max is ${Math.round(voMax)} ml/kg3</h1>`;
+    setGaugeValue(gaugeElement, voMax / 95);
 }
-start = prompt("awesome, lets get some informationa about your races in meter and minutes. Want to add a race?");
-while (start == "yes") {
-    let distance = parseFloat(prompt("what is the disntace of the race?"));
-    let time = parseFloat(prompt("what is the time of the race in minutes"))
-    costumer.personalRecords.push(new Race(distance, time));
-    start = prompt("want to add another one?");
+
+
+function setGaugeValue(gauge, value) {
+    if (value < 0 || value > 1) {
+        return;
+    }
+
+    gauge.querySelector(".gauge__fill").style.transform = `rotate(${value / 2
+        }turn)`;
+    gauge.querySelector(".gauge__cover").textContent = `${Math.round(
+        value * 100
+    )}%`;
 }
 
-console.log(costumer.personalRecords);
-
-const answer = costumer.VO2();
-alert(`nice your vo2 max is ${answer}`);
-
-//updatet the info in the otehr card
-
-let racersName = document.getElementById("racersName")
-let racersInfo = document.getElementById("racersInfo")
-racersName.innerText = costumer.name;
-racersInfo.innerText = costumer.age + " years old | " + costumer.gender;
-
-let racersDistance = document.getElementById("racersDistance");
-let raceTime = document.getElementById("raceTime");
-let speed = document.getElementById("speed");
-let vomax = document.getElementById("vomax");
-
-racersDistance.innerText = costumer.personalRecords[0].raceDistance;
-raceTime.innerText = costumer.personalRecords[0].timeMinutes;
-speed.innerText = costumer.personalRecords[0].velocity;
-vomax.innerText = Math.round(costumer.VO2());
+setGaugeValue(gaugeElement, 0.3);
