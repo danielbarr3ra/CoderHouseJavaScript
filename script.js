@@ -4,8 +4,11 @@ class Runner {
         this.name = name;
         this.gender = gender;
         this.age = age;
-        this.maxHR = 208 - 0.7 * this.age;
         this.races = [];
+        //TODO add haschode to create ID avoid duplicate confussion.
+    }
+    addRace(Race) {
+        this.races.push(Race);
     }
 }
 
@@ -18,6 +21,21 @@ class LeaderBoard {
     }
 }
 
+class Race {
+    constructor(distance, duration) {
+        this.distance = distance; //meters need to add option
+        this.duration = duration;
+        this.velocity = this.distance / this.duration;
+        this.calcuateVoMax();
+    }
+
+    calcuateVoMax() {
+        let percentMax = 0.8 + 0.1894393 * Math.exp(-0.012778 * this.duration) + 0.2989558 * Math.exp(-0.1932605 * this.duration);
+        let vo2 = -4.60 + 0.182258 * this.velocity + 0.000104 * this.velocity * this.velocity;
+        this.vo2Max = (vo2 / percentMax);
+    }
+}
+
 //instatianting  the leaderborad
 
 const global = new LeaderBoard();
@@ -27,13 +45,22 @@ const userForm = document.getElementById("racerForm");
 
 userForm.addEventListener("submit", (e) => {
     e.preventDefault();
-    let name = userForm.elements['name'].value;
-    let age = userForm.elements['age'].value;
-    let gender = userForm.elements['gender'].value;
-    let Racer = new Runner(name, age, gender);
-    global.addMember(Racer);
+    global.addMember(createRunner());
     dsiplayLeaderBoard();
+    //this is bad becasue I'm just reweritgn the whole list everry time I run it.
+    localStorage.setItem('global', JSON.stringify(global));
 })
+
+function createRunner() {
+    let aRace = new Race(userForm.elements['distance'].value, userForm.elements['time'].value);
+
+    let aRunner = new Runner(userForm.elements['name'].value, userForm.elements['age'].value, userForm.elements['gender'].value);
+
+    aRunner.addRace(aRace);
+    return aRunner;
+}
+
+
 
 function dsiplayLeaderBoard() {
     let formatedTable = "";
