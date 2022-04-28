@@ -7,19 +7,11 @@ class Runner {
         this.races = [];
         this.id = counterID;
         counterID++;
+        this.totalDistance = 0;
     }
     addRace(Race) {
         this.races.push(Race);
-        this.totalDistance();
-    }
-    totalDistance() {
-        let initial = 0;
-        if (this.races.length > 1) {
-            this.totalDistance = this.races.reduce((prev, curr) => prev.distance + curr.distance, 0)
-        } else {
-            this.totalDistance = this.races[0].distance;
-        }
-
+        this.totalDistance += parseInt(Race.distance);
     }
 }
 
@@ -29,6 +21,15 @@ class LeaderBoard {
     }
     addMember(Runner) {
         this.members.push(Runner);
+    }
+    findMember(anID) {
+        let indexRunner = this.members.findIndex(runner => runner.id == anID);
+        return indexRunner;
+    }
+    updateMember(anID, newDistance, newTime) {
+        let indexRunner = this.findMember(anID);
+        let newRace = new Race(newDistance, newTime);
+        this.members[indexRunner].addRace(newRace);
     }
 }
 
@@ -47,15 +48,17 @@ class Race {
     }
 }
 
-//instatianting  the leaderborad
+//instatianting  the leaderborad, get constants
 
 const global = new LeaderBoard();
 let counterID = 0;
 
 const userForm = document.getElementById("racerForm");
-
+const raceForm = document.getElementById('updateRaceForm');
 
 //events
+
+//add a racer
 userForm.addEventListener("submit", (e) => {
     e.preventDefault();
     global.addMember(createRunner());
@@ -64,6 +67,15 @@ userForm.addEventListener("submit", (e) => {
     localStorage.setItem('global', JSON.stringify(global));
 })
 
+
+//add new race to an existing racer
+raceForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    global.updateMember(raceForm.elements['updateRaceID'].value, raceForm.elements['updateDistance'].value, raceForm.elements['updateTime'].value);
+
+    dsiplayLeaderBoard()
+})
 
 
 // functions for events;

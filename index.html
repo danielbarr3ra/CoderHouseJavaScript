@@ -15,7 +15,7 @@
         <p>navigation here</p>
     </header>
 
-    <div id="submission">
+    <div class="submission">
         <form id="racerForm">
             <label for="name">Racer's Name:</label>
             <input type="text" id="name" name="name">
@@ -35,12 +35,18 @@
             <input type="submit" value="Submit" id="submit-racer">
         </form>
     </div>
-
-    <div>
-        <h1>Find a racer</h1>
-    </div>
-    <div>
-        <h1>Update a race</h1>
+    <div class="submission">
+        <form id="updateRaceForm">
+            <h1>Update a race</h1>
+            <label for="updateRace">What is the racersID</label>
+            <input type="number" id="updateRaceID" name="updateRaceID">
+            <br>
+            <label for="updateDistance">New Race Distance:</label>
+            <input type="number" id="updateDistance" name="updateDistance">
+            <label for="updateTime">New Race Time:</label>
+            <input type="number" id="updateTime" name="updateTime">
+            <input type="submit" value="Submit" id="submit-newRace">
+        </form>
     </div>
 
     <div id="leaderboard">
