@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles/style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
     <title>Racers Compare</title>
 </head>
 
@@ -14,10 +13,34 @@
     <header>
         <h1>A local leaderboard</h1>
     </header>
-    <button class="submit-racer">
-        lets add an user to the storage
-    </button>
 
+    <div id="submission">
+        <form id="racerForm">
+            <label for="name">Racer's Name:</label>
+            <input type="text" id="name" name="name">
+            <br>
+            <label for="age">Racer's Age:</label>
+            <input type="number" id="age" name="age">
+            <br>
+            <label for="gender">Gender:</label>
+            <input type="text" id="gender" name="gender">
+            <br>
+            <input type="submit" value="Submit" id="submit-racer">
+        </form>
+    </div>
+
+    <div id="leaderboard">
+        <h1>The leaderBoard of memeber is here</h1>
+        <table id="leaderboardTable">
+            <thead>
+                <th>Racer</th>
+                <th>Age</th>
+            </thead>
+            <tbody id="listOfRacers"></tbody>
+        </table>
+    </div>
+
+    <script src="./script.js"></script>
 </body>
 
 </html>
