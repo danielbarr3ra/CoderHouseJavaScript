@@ -5,7 +5,8 @@ class Runner {
         this.gender = gender;
         this.age = age;
         this.races = [];
-        //TODO add haschode to create ID avoid duplicate confussion.
+        this.id = counterID;
+        counterID++;
     }
     addRace(Race) {
         this.races.push(Race);
@@ -49,7 +50,7 @@ class Race {
 //instatianting  the leaderborad
 
 const global = new LeaderBoard();
-
+let counterID = 0;
 
 const userForm = document.getElementById("racerForm");
 
@@ -79,6 +80,6 @@ function createRunner() {
 
 function dsiplayLeaderBoard() {
     let formatedTable = "";
-    global.members.forEach((runner) => formatedTable += '<tr><td>' + runner.name + '</td><td>' + runner.totalDistance + '</td></tr>');
+    global.members.forEach((runner) => formatedTable += '<tr><td>' + runner.name + '</td><td>' + runner.totalDistance + '</td><td>' + '</td><td>' + runner.id + '</td></tr>');
     document.getElementById("listOfRacers").innerHTML = formatedTable
 }
