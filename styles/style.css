@@ -34,3 +34,7 @@ form label {
 h1 {
     font-family: 'Roboto', sans-serif;
 }
+
+#racer {
+    background-color: antiquewhite;
+}

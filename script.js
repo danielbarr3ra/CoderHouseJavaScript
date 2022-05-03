@@ -63,8 +63,10 @@ userForm.addEventListener("submit", (e) => {
     e.preventDefault();
     global.addMember(createRunner());
     dsiplayLeaderBoard();
+    dsiplayLeaderBoardCards()
     //this is bad becasue I'm just reweritgn the whole list everry time I run it.
     localStorage.setItem('global', JSON.stringify(global));
+
 })
 
 
@@ -75,6 +77,7 @@ raceForm.addEventListener("submit", (e) => {
     global.updateMember(raceForm.elements['updateRaceID'].value, raceForm.elements['updateDistance'].value, raceForm.elements['updateTime'].value);
 
     dsiplayLeaderBoard()
+    dsiplayLeaderBoardCards()
 })
 
 
@@ -94,4 +97,12 @@ function dsiplayLeaderBoard() {
     let formatedTable = "";
     global.members.forEach((runner) => formatedTable += '<tr><td>' + runner.name + '</td><td>' + runner.totalDistance + '</td><td>' + runner.id + '</td></tr>');
     document.getElementById("listOfRacers").innerHTML = formatedTable
+}
+
+function dsiplayLeaderBoardCards() {
+    let formatedTable = "";
+    global.members.forEach((runner) => formatedTable += '<div class = "racerRows"><div class = "racerCardName">' +
+        runner.name + '</div><div class = "racerCardDistance">' +
+        runner.totalDistance + '</div><div class = "racerCardID">' + runner.id + '</div></div>');
+    document.getElementById("racer-rows").innerHTML = formatedTable
 }
