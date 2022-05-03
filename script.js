@@ -31,6 +31,12 @@ class LeaderBoard {
         let newRace = new Race(newDistance, newTime);
         this.members[indexRunner].addRace(newRace);
     }
+    getLeader() {
+        let max = this.members.reduce((prev, current) => {
+            return (prev.totalDistance > current.totalDistance) ? prev : current
+        })
+        return max;
+    }
 }
 
 class Race {
@@ -50,8 +56,8 @@ class Race {
 
 //instatianting  the leaderborad, get constants
 
-const global = new LeaderBoard();
-let counterID = 0;
+const global = new LeaderBoard(); //need to check if the local storage is empty or not
+let counterID = localStorage.getItem('counterID') == null ? 0 : parseInt(localStorage.getItem('counterID'))
 
 const userForm = document.getElementById("racerForm");
 const raceForm = document.getElementById('updateRaceForm');
@@ -63,8 +69,12 @@ userForm.addEventListener("submit", (e) => {
     e.preventDefault();
     global.addMember(createRunner());
     dsiplayLeaderBoard();
+    dsiplayLeaderBoardCards()
     //this is bad becasue I'm just reweritgn the whole list everry time I run it.
     localStorage.setItem('global', JSON.stringify(global));
+    localStorage.setItem('counterID', JSON.stringify(counterID));
+    updateCurrentLeader()
+
 })
 
 
@@ -75,6 +85,8 @@ raceForm.addEventListener("submit", (e) => {
     global.updateMember(raceForm.elements['updateRaceID'].value, raceForm.elements['updateDistance'].value, raceForm.elements['updateTime'].value);
 
     dsiplayLeaderBoard()
+    dsiplayLeaderBoardCards()
+    updateCurrentLeader()
 })
 
 
@@ -94,4 +106,19 @@ function dsiplayLeaderBoard() {
     let formatedTable = "";
     global.members.forEach((runner) => formatedTable += '<tr><td>' + runner.name + '</td><td>' + runner.totalDistance + '</td><td>' + runner.id + '</td></tr>');
     document.getElementById("listOfRacers").innerHTML = formatedTable
+}
+
+function dsiplayLeaderBoardCards() {
+    let formatedTable = "";
+    global.members.forEach((runner) => formatedTable += '<div class = "racerRows"><div class = "racerCardName">' +
+        runner.name + '</div><div class = "racerCardDistance">' +
+        runner.totalDistance + '</div><div class = "racerCardID">' + runner.id + '</div></div>');
+    document.getElementById("racer-rows").innerHTML = formatedTable
+}
+
+function updateCurrentLeader() {
+    let maxRunner = global.getLeader();
+    //destructure the info of the racer with vo2 max etc
+    let { name, gender, age, races, id, distance, vo2 } = maxRunner;
+    document.getElementById("leaderCard").innerHTML = '<h1> the current leader is ' + name + "<h1>";
 }
