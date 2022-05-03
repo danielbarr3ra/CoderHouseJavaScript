@@ -31,6 +31,12 @@ class LeaderBoard {
         let newRace = new Race(newDistance, newTime);
         this.members[indexRunner].addRace(newRace);
     }
+    getLeader() {
+        let max = this.members.reduce((prev, current) => {
+            return (prev.totalDistance > current.totalDistance) ? prev : current
+        })
+        return max;
+    }
 }
 
 class Race {
@@ -50,8 +56,8 @@ class Race {
 
 //instatianting  the leaderborad, get constants
 
-const global = new LeaderBoard();
-let counterID = 0;
+const global = new LeaderBoard(); //need to check if the local storage is empty or not
+let counterID = localStorage.getItem('counterID') == null ? 0 : parseInt(localStorage.getItem('counterID'))
 
 const userForm = document.getElementById("racerForm");
 const raceForm = document.getElementById('updateRaceForm');
@@ -66,6 +72,8 @@ userForm.addEventListener("submit", (e) => {
     dsiplayLeaderBoardCards()
     //this is bad becasue I'm just reweritgn the whole list everry time I run it.
     localStorage.setItem('global', JSON.stringify(global));
+    localStorage.setItem('counterID', JSON.stringify(counterID));
+    updateCurrentLeader()
 
 })
 
@@ -78,6 +86,7 @@ raceForm.addEventListener("submit", (e) => {
 
     dsiplayLeaderBoard()
     dsiplayLeaderBoardCards()
+    updateCurrentLeader()
 })
 
 
@@ -105,4 +114,11 @@ function dsiplayLeaderBoardCards() {
         runner.name + '</div><div class = "racerCardDistance">' +
         runner.totalDistance + '</div><div class = "racerCardID">' + runner.id + '</div></div>');
     document.getElementById("racer-rows").innerHTML = formatedTable
+}
+
+function updateCurrentLeader() {
+    let maxRunner = global.getLeader();
+    //destructure the info of the racer with vo2 max etc
+    let { name, gender, age, races, id, distance, vo2 } = maxRunner;
+    document.getElementById("leaderCard").innerHTML = '<h1> the current leader is ' + name + "<h1>";
 }
