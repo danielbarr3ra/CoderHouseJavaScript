@@ -28,8 +28,11 @@ class LeaderBoard {
     }
     updateMember(anID, newDistance, newTime) {
         let indexRunner = this.findMember(anID);
-        let newRace = new Race(newDistance, newTime);
-        this.members[indexRunner].addRace(newRace);
+        let newRace;
+        if (indexRunner != -1) {
+            newRace = new Race(newDistance, newTime);
+            this.members[indexRunner].addRace(newRace);
+        }
     }
     getLeader() {
         let max = this.members.reduce((prev, current) => {
@@ -74,9 +77,18 @@ userForm.addEventListener("submit", (e) => {
     localStorage.setItem('global', JSON.stringify(global));
     localStorage.setItem('counterID', JSON.stringify(counterID));
     updateCurrentLeader()
-
 })
 
+//edd library
+const submitBtn = document.getElementById("submit-racer");
+submitBtn.addEventListener("click", () => {
+    Swal.fire({
+        title: 'New runner?',
+        text: 'Welcome to the community',
+        icon: 'success',
+        confirmButtonText: 'lets run!'
+    })
+})
 
 //add new race to an existing racer
 raceForm.addEventListener("submit", (e) => {
