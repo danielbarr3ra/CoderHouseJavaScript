@@ -19,63 +19,61 @@
 </head>
 
 <body class="mainPage">
-    <header class="leaderboard header">
-        <h1>A local leaderboard</h1>
-        <p>Want to be competitive? join our leader board and compare your monthly milage with the community </p>
+    <header class="menuTiles">
+        <div class="menuSection">
+            <h3>Run Tog</h3>
+        </div>
+        <div class="menuSection">
+            Running
+        </div>
+        <div class="menuSection">
+            Biking
+        </div>
+        <div class="menuSection">
+            Swimming
+        </div>
+        <div class="menuSection">
+            Map
+        </div>
     </header>
-    <div form-hub>
-
-        <form id="racerForm">
-            <h1>Add a Runner or Yourself</h1>
-            <label for="name">Racer's Name:</label>
-            <input type="text" id="name" name="name">
-            <br>
-            <label for="age">Racer's Age:</label>
-            <input type="number" id="age" name="age">
-            <br>
-            <label for="gender">Gender:</label>
-            <input type="text" id="gender" name="gender">
-            <br>
-            <label for="distance">Race Distance:</label>
-            <input type="number" id="distance" name="distance">
-            <br>
-            <label for="time">Race Time:</label>
-            <input type="number" id="time" name="time">
-            <br>
-            <input type="submit" value="Submit" id="submit-racer">
-        </form>
-
-
-        <form id="updateRaceForm">
+    <div class="form-hub">
+        <div class="formContainer">
             <h1>Update a race</h1>
-            <label for="updateRace">What is the racersID</label>
-            <input type="number" id="updateRaceID" name="updateRaceID">
-            <br>
-            <label for="updateDistance">New Race Distance:</label>
-            <input type="number" id="updateDistance" name="updateDistance">
-            <label for="updateTime">New Race Time:</label>
-            <input type="number" id="updateTime" name="updateTime">
-            <input type="submit" value="Submit" id="submit-newRace">
-        </form>
-    </div>
-
-
-    <div id="leaderboard">
-        <h1>The leaderBoard of memeber is here</h1>
-        <table id="leaderboardTable">
-            <thead>
-                <th>Racer</th>
-                <th>Distance</th>
-                <th>ID</th>
-            </thead>
-            <tbody id="listOfRacers"></tbody>
-        </table>
-    </div>
-    <div id="leader">
-        <h1> here is the leader!</h1>
-        <div id="leaderCard">
+            <form id="racerForm">
+                <label for="name">Racer's Name:</label>
+                <input type="text" id="name" name="name">
+                <br>
+                <label for="age">Racer's Age:</label>
+                <input type="number" id="age" name="age">
+                <br>
+                <label for="gender">Gender:</label>
+                <input type="text" id="gender" name="gender">
+                <br>
+                <label for="distance">Race Distance:</label>
+                <input type="number" id="distance" name="distance">
+                <br>
+                <label for="time">Race Time:</label>
+                <input type="number" id="time" name="time">
+                <br>
+                <input type="submit" value="Submit" id="submit-racer">
+            </form>
+        </div>
+        <div class="formContainer">
+            <h1>Update a race</h1>
+            <form id="updateRaceForm">
+                <label for="updateRace">What is the racersID</label>
+                <input type="number" id="updateRaceID" name="updateRaceID">
+                <br>
+                <label for="updateDistance">New Race Distance:</label>
+                <input type="number" id="updateDistance" name="updateDistance">
+                <label for="updateTime">New Race Time:</label>
+                <input type="number" id="updateTime" name="updateTime">
+                <input type="submit" value="Submit" id="submit-newRace">
+            </form>
         </div>
     </div>
+
+
 
     <h1>Let see if I can imporeve the look of these with actual cards</h1>
     <div id="leaderboard-Cards">

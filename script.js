@@ -15,6 +15,21 @@ class Runner {
     }
 }
 
+class Race {
+    constructor(distance, duration) {
+        this.distance = distance; //meters need to add option
+        this.duration = duration;
+        this.velocity = this.distance / this.duration;
+        this.calcuateVoMax();
+    }
+
+    calcuateVoMax() {
+        let percentMax = 0.8 + 0.1894393 * Math.exp(-0.012778 * this.duration) + 0.2989558 * Math.exp(-0.1932605 * this.duration);
+        let vo2 = -4.60 + 0.182258 * this.velocity + 0.000104 * this.velocity * this.velocity;
+        this.vo2Max = (vo2 / percentMax);
+    }
+}
+
 class LeaderBoard {
     constructor() {
         this.members = []; //an empty array of members we will add them in the future
@@ -42,20 +57,6 @@ class LeaderBoard {
     }
 }
 
-class Race {
-    constructor(distance, duration) {
-        this.distance = distance; //meters need to add option
-        this.duration = duration;
-        this.velocity = this.distance / this.duration;
-        this.calcuateVoMax();
-    }
-
-    calcuateVoMax() {
-        let percentMax = 0.8 + 0.1894393 * Math.exp(-0.012778 * this.duration) + 0.2989558 * Math.exp(-0.1932605 * this.duration);
-        let vo2 = -4.60 + 0.182258 * this.velocity + 0.000104 * this.velocity * this.velocity;
-        this.vo2Max = (vo2 / percentMax);
-    }
-}
 
 //instatianting  the leaderborad, get constants
 
@@ -65,7 +66,8 @@ let counterID = localStorage.getItem('counterID') == null ? 0 : parseInt(localSt
 const userForm = document.getElementById("racerForm");
 const raceForm = document.getElementById('updateRaceForm');
 
-//events
+//validation of event functions;
+
 
 //add a racer
 userForm.addEventListener("submit", (e) => {
@@ -79,9 +81,10 @@ userForm.addEventListener("submit", (e) => {
     updateCurrentLeader()
 })
 
-//edd library
+
 const submitBtn = document.getElementById("submit-racer");
 submitBtn.addEventListener("click", () => {
+    validateRacer();
     Swal.fire({
         title: 'New runner?',
         text: 'Welcome to the community',
@@ -105,7 +108,6 @@ raceForm.addEventListener("submit", (e) => {
 // functions for events;
 function createRunner() {
     let aRace = new Race(userForm.elements['distance'].value, userForm.elements['time'].value);
-
     let aRunner = new Runner(userForm.elements['name'].value, userForm.elements['age'].value, userForm.elements['gender'].value);
 
     aRunner.addRace(aRace);
@@ -113,12 +115,6 @@ function createRunner() {
 }
 
 
-
-function dsiplayLeaderBoard() {
-    let formatedTable = "";
-    global.members.forEach((runner) => formatedTable += '<tr><td>' + runner.name + '</td><td>' + runner.totalDistance + '</td><td>' + runner.id + '</td></tr>');
-    document.getElementById("listOfRacers").innerHTML = formatedTable
-}
 
 function dsiplayLeaderBoardCards() {
     let formatedTable = "";

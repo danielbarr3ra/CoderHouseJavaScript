@@ -1,18 +1,37 @@
-.mainPage {
-    background: rgb(63, 94, 251);
-    background: -moz-radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
-    background: -webkit-radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
-    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3f5efb", endColorstr="#fc466b", GradientType=1);
+* {
+    box-sizing: border-box;
+    margin: 0;
 }
+
+.mainPage {
+    background-color: black
+}
+
+.menuTiles {
+    display: flex;
+    flex-direction: row;
+}
+
+.menuSection {
+    padding: 0.25em 1em;
+    border-radius: 20px;
+    font-size: 2rem;
+    border: solid 3px rgb(227, 5, 224);
+    text-shadow: 0 0 0.125em hsl(0 0% 100% / 0.5), 0 0 0.45em rgb(227, 5, 224);
+    box-shadow: inset 0 0 0.5em 0 rgb(227, 5, 224), 0 0 0.5em 0 rgb(227, 5, 224);
+    font-family: 'Roboto', sans-serif;
+}
+
+.menuSection {}
 
 .form-hub {
     display: flex;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
 }
 
-form {
+.form-hub form {
     background: rgba(255, 255, 255, 0.137);
     padding: 1.5em;
     border-radius: 20px;
@@ -22,7 +41,10 @@ form {
     box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
     text-align: center;
     position: relative;
-    transition: all 0.2s ease-in-out;
+}
+
+.form-hub h1 {
+    color: white;
 }
 
 form label {
