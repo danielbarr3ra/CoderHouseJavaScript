@@ -73,7 +73,7 @@ const raceForm = document.getElementById('updateRaceForm');
 userForm.addEventListener("submit", (e) => {
     e.preventDefault();
     global.addMember(createRunner());
-    dsiplayLeaderBoard();
+    //dsiplayLeaderBoard();
     dsiplayLeaderBoardCards()
     //this is bad becasue I'm just reweritgn the whole list everry time I run it.
     localStorage.setItem('global', JSON.stringify(global));
@@ -84,7 +84,7 @@ userForm.addEventListener("submit", (e) => {
 
 const submitBtn = document.getElementById("submit-racer");
 submitBtn.addEventListener("click", () => {
-    validateRacer();
+    //validateRacer();
     Swal.fire({
         title: 'New runner?',
         text: 'Welcome to the community',
@@ -99,7 +99,7 @@ raceForm.addEventListener("submit", (e) => {
 
     global.updateMember(raceForm.elements['updateRaceID'].value, raceForm.elements['updateDistance'].value, raceForm.elements['updateTime'].value);
 
-    dsiplayLeaderBoard()
+    //disiplayLeaderBoard()
     dsiplayLeaderBoardCards()
     updateCurrentLeader()
 })

@@ -4,7 +4,7 @@
 }
 
 .mainPage {
-    background-color: black
+    background-color: gray
 }
 
 .menuTiles {
@@ -21,8 +21,6 @@
     box-shadow: inset 0 0 0.5em 0 rgb(227, 5, 224), 0 0 0.5em 0 rgb(227, 5, 224);
     font-family: 'Roboto', sans-serif;
 }
-
-.menuSection {}
 
 .form-hub {
     display: flex;
