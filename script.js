@@ -65,9 +65,23 @@ let counterID = localStorage.getItem('counterID') == null ? 0 : parseInt(localSt
 
 const userForm = document.getElementById("racerForm");
 const raceForm = document.getElementById('updateRaceForm');
+const weatherForm = document.getElementById("weatherForm");
+const submitBtn = document.getElementById("submit-racer");
+const weatherBtn = document.getElementById('submit-location');
+let Weather;
 
 //validation of event functions;
 
+
+// weather
+weatherForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let getURL = createGetURL();
+    //use an async function go get the weather object
+    getWeather(getURL)  // this weather object has an array get the newest temeprature/
+
+
+})
 
 //add a racer
 userForm.addEventListener("submit", (e) => {
@@ -81,8 +95,6 @@ userForm.addEventListener("submit", (e) => {
     updateCurrentLeader()
 })
 
-
-const submitBtn = document.getElementById("submit-racer");
 submitBtn.addEventListener("click", () => {
     //validateRacer();
     Swal.fire({
@@ -129,4 +141,23 @@ function updateCurrentLeader() {
     //destructure the info of the racer with vo2 max etc
     let { name, gender, age, races, id, distance, vo2 } = maxRunner;
     document.getElementById("leaderCard").innerHTML = '<h1> the current leader is ' + name + "<h1>";
+}
+
+function createGetURL() {
+    let lat = weatherForm.elements['lat'].value
+    let long = weatherForm.elements['long'].value
+    let url = "https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + long + "&daily=temperature_2m_max&timezone=America%2FNew_York"
+    return url;
+}
+
+function getWeather(anURL) {
+    let todaysWeather = fetch(anURL).then((answer) => answer.json()).then((info) => {
+        todaysValue = info.daily.temperature_2m_max[0];
+        updateWeather(todaysValue);
+    })
+}
+
+function updateWeather(weather) {
+    let formatedWeather = "<h1> Hey your current weather is " + weather + " celsius </h1>"
+    document.getElementById("updatedWeather").innerHTML = formatedWeather;
 }

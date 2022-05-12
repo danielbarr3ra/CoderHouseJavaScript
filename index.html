@@ -55,7 +55,7 @@
                 <label for="time">Race Time:</label>
                 <input type="number" id="time" name="time">
                 <br>
-                <input type="submit" value="Submit" id="submit-racer">
+                <input type="submit" value="submit" id="submit-racer">
             </form>
         </div>
         <div class="formContainer">
@@ -68,7 +68,7 @@
                 <input type="number" id="updateDistance" name="updateDistance">
                 <label for="updateTime">New Race Time:</label>
                 <input type="number" id="updateTime" name="updateTime">
-                <input type="submit" value="Submit" id="submit-newRace">
+                <input type="submit" value="submit" id="submit-newRace">
             </form>
         </div>
     </div>
@@ -76,6 +76,9 @@
 
 
     <h1>Let see if I can imporeve the look of these with actual cards</h1>
+    <div id="leaderCard">
+
+    </div>
     <div id="leaderboard-Cards">
         <div id="headings">
             <h2>Headings will go here</h2>
@@ -84,6 +87,29 @@
 
         </div>
     </div>
+    <br>
+    <h1>Fetch Example</h1>
+    <p>since this is a running website (hardly one, I need to sit down and relly work on it before submiting) I will use
+        weahher to see if its too how utside</p>
+    <div class="formContainer">
+        <h1>Weather</h1>
+        <form id="weatherForm">
+            <label for="lat">latitutde</label>
+            <input type="number" id="lat" name="lat">
+            <br>
+            <label for="long">latitutde</label>
+            <input type="number" id="long" name="long">
+            <input type="submit" value="submit" id="submit-location">
+        </form>
+        <div id="updatedWeather">
+
+        </div>
+    </div>
+
+
+
+
+
     <script src="sweetalert2.all.min.js"></script>
     <script src="./script.js"></script>
 </body>
