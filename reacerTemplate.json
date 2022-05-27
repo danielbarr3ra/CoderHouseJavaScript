@@ -1,0 +1,11 @@
+{
+    "name": "racersName",
+    "age": "racersAge",
+    "gender": "racersGender",
+    "races": [
+        {
+            "distance": 5000,
+            "time": 12000
+        }
+    ]
+}
