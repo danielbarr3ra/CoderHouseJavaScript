@@ -55,4 +55,40 @@ body {
 
 .leaderBoardHub {
     display: none;
+    width: 100%;
+    border-radius: 3rem;
+
+
+    /* no tengo buen ojo profesora espero no se enoje por usar esta paleta de  ui gradients.com */
+    background: #D1913C;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFD194, #D1913C);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFD194, #D1913C);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
+
+.leaderBoardHeadings {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+.leaderBoardRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+
+    padding: .25rem;
+}
+
+
+/* .leaderBoardRow .leaderBoardRow-number {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+} */

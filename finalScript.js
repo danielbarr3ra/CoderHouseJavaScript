@@ -1,6 +1,9 @@
 // using jquery instead
 
 $(document).ready(function () {
+    // helpufl html for cards
+    // var racerRowLeaderBoard = '<div class = "racerRow">';
+
     // storage
     const RacersList = []
 
