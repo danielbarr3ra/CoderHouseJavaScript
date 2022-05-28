@@ -29,8 +29,7 @@ body {
 }
 
 .formHub {
-    display: flex;
-    flex-direction: row;
+    display: none;
 }
 
 .pastelForm {
@@ -54,10 +53,6 @@ body {
     font-weight: 700;
 }
 
-#addRacerForm {
-    display: none;
-}
-
-.leaderBoard {
+.leaderBoardHub {
     display: none;
 }

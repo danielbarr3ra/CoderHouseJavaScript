@@ -1,26 +1,20 @@
-// constant buuttons in the page that will trigger 
-const addRacerBtn = document.getElementById("addRacer");
-const submitRacerBtn = document.getElementById("submitRacerForm")
-// functions
-const showSubmitRacerForm = () => {
-    document.getElementById("addRacerForm").style.display = 'flex'
-}
+// using jquery instead
+
+$(document).ready(function () {
+    // buttons 
+    const showLeaderBoardBtn = $("#showLeaderboard");
+    const addRacerBtn = $("#addRacer");
+    //click handlers 
+    showLeaderBoardBtn.click(function () {
+        $("#leaderBoardWrapper").toggle();
+    });
+    addRacerBtn.click(function () {
+        $("#racerFormWrapper").toggle();
+    })
+});
+
+
 const submitRacerForm = () => {
     document.getElementById("addRacerForm").style.display = 'none'
     alert("submitted")
 }
-
-//event listeners
-addRacerBtn.addEventListener("click", showSubmitRacerForm);
-submitRacerBtn.addEventListener("click", submitRacerForm);
-
-// leaderboard but unshow methods
-
-$(document).ready(function () {
-    // jquery has been loaded 
-    const showLeaderBoardBtn = $("#showLeaderboard");
-    //function 
-    showLeaderBoardBtn.click(function () {
-        $("#globalBoard").toggle();
-    });
-});
