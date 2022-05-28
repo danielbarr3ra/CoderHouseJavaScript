@@ -26,9 +26,19 @@
         </button>
     </div>
     <div class="formHub">
-        <div class="form" id="addRacerForm">
+        <form class="pastelForm" id="addRacerForm">
+            <label for="racersName">What is your Name?</label>
+            <input type="text" id="racersName" name="racersName">
+            <label for="racersAge">Age</label>
+            <input type="number" min=0 id="racersAge" name="racersAge">
+            <label for="racersGender">Gender</label>
+            <select name="racersGender" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
 
-        </div>
+            <input class="submitForm" type="submit" value="submit">
+        </form>
     </div>
 
     <!-- <header class="menuTiles">

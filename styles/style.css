@@ -18,7 +18,7 @@ body {
 
 .pastelButton {
     margin: 2rem;
-    font-weight: 200;
+    font-weight: 400;
     font-size: 20px;
     letter-spacing: 5px;
     padding: 10px 40px 13px;
@@ -26,4 +26,30 @@ body {
     outline: 1px dashed black;
     outline-offset: 3px;
     color: aliceblue
+}
+
+.formHub {
+    display: flex;
+    flex-direction: row;
+}
+
+.pastelForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aliceblue;
+}
+
+.pastelForm label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    margin: 1.5rem;
+}
+
+.pastelForm .submitForm {
+    width: 75%;
+    font-size: 15px;
+    margin-top: 2rem;
+    font-weight: 700;
 }
