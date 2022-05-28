@@ -1,16 +1,22 @@
 // using jquery instead
 
 $(document).ready(function () {
+    // set racersDatabase
+    if (localStorage.getItem("storedRacers") === null) {
+        localStorage.setItem("storedRacers", []);
+    }
+
     // buttons 
     const showLeaderBoardBtn = $("#showLeaderboard");
     const addRacerBtn = $("#addRacer");
-    const submitRacerFormBtn = $("#submitRacerForm");
 
     //forms
     const addRacerForm = $("#addRacerForm")
 
-    //helper functionss 
-    //using arrow functions because work also usses them
+
+    //helper functions, using arrow functions because work also usses them
+
+    //convert form to json
     const formToJson = (aForm) => {
         const arrayAnswers = $(aForm).serializeArray()
         const jsonObject = {}
@@ -20,6 +26,17 @@ $(document).ready(function () {
         });
         return jsonObject
     }
+
+    //submit runner object to database
+    const postRacerDatabase = (aRacer) => {
+        const postObject = JSON.stringify(aRacer);
+
+    }
+
+    const getRacerDatabase = (aRacersName) => {
+
+    }
+
     //click handlers 
     showLeaderBoardBtn.click(function () {
         $("#leaderBoardWrapper").toggle();
@@ -28,8 +45,8 @@ $(document).ready(function () {
     addRacerBtn.click(function () {
         $("#racerFormWrapper").toggle();
     })
-    // submit racerFrom
 
+    // submit form handlers
     addRacerForm.on("submit", function (e) {
         e.preventDefault();
         const form = $(e.target) //this gets the form since the event has the target, I think?
