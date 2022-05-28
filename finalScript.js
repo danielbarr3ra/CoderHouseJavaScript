@@ -1,11 +1,16 @@
-// constant elemtn id's
-const submitRacer = document.getElementById("addRacer");
+// constant buuttons in the page that will trigger 
+const addRacerBtn = document.getElementById("addRacer");
+const submitRacerBtn = document.getElementById("submitRacerForm")
 
 // functions
 const showSubmitRacerForm = () => {
-    document.getElementById("addRacerForm").innerHTML = "<h1>hey lets add a form</h1>"
+    document.getElementById("addRacerForm").style.display = 'flex'
+}
+const submitRacerForm = () => {
+    document.getElementById("addRacerForm").style.display = 'none'
+    alert("submitted")
 }
 
-
 //event listeners
-submitRacer.addEventListener("click", showSubmitRacerForm);
+addRacerBtn.addEventListener("click", showSubmitRacerForm);
+submitRacerBtn.addEventListener("click", submitRacerForm);
