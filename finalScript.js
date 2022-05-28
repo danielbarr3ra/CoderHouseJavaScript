@@ -1,10 +1,8 @@
 // using jquery instead
 
 $(document).ready(function () {
-    // set racersDatabase
-    if (localStorage.getItem("storedRacers") === null) {
-        localStorage.setItem("storedRacers", []);
-    }
+    // storage
+    const RacersList = []
 
     // buttons 
     const showLeaderBoardBtn = $("#showLeaderboard");
@@ -28,18 +26,19 @@ $(document).ready(function () {
     }
 
     //submit runner object to database
-    const postRacerDatabase = (aRacer) => {
-        const postObject = JSON.stringify(aRacer);
-
+    const postRacerToList = (aRacer) => {
+        RacersList.push(aRacer);
     }
 
-    const getRacerDatabase = (aRacersName) => {
+    //might neeed later
+    const getRacerFromList = (aRacersName) => {
 
     }
 
     //click handlers 
     showLeaderBoardBtn.click(function () {
         $("#leaderBoardWrapper").toggle();
+        alert(RacersList)
     });
 
     addRacerBtn.click(function () {
@@ -49,10 +48,8 @@ $(document).ready(function () {
     // submit form handlers
     addRacerForm.on("submit", function (e) {
         e.preventDefault();
-        const form = $(e.target) //this gets the form since the event has the target, I think?
+        const form = $(e.target)
         const racerJson = formToJson(form)
-        console.log(racerJson)
-        alert("new method")
-        alert(racerJson)
+        postRacerToList(racerJson);
     })
 });
