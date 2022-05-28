@@ -28,7 +28,7 @@ body {
     color: aliceblue
 }
 
-.formHub {
+#racerFormWrapper {
     display: none;
 }
 
@@ -51,6 +51,17 @@ body {
     font-size: 15px;
     margin-top: 2rem;
     font-weight: 700;
+}
+
+#competitionWrapper {
+    display: none
+}
+
+#addCompetitions {
+    background-color: rgb(221, 88, 88);
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
 }
 
 .leaderBoardHub {

@@ -13,6 +13,7 @@ $(document).ready(function () {
 
     //forms
     const addRacerForm = $("#addRacerForm")
+    const addComptetitionsForm = $("#addCompetitions")
 
 
     //helper functions, using arrow functions because work also usses them
@@ -68,6 +69,9 @@ $(document).ready(function () {
         const racerJson = formToJson(form)
         postRacerToList(racerJson);
         $("#racerFormWrapper").toggle();
-        updateCurrentLeaderBoard();
+        $("#competitionWrapper").toggle();
+
+        //updateCurrentLeaderBoard();
+
     })
 });
