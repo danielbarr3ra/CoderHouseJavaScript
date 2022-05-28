@@ -19,12 +19,13 @@ $(document).ready(function () {
 
     //update leaderboard
     const updateCurrentLeaderBoard = () => {
+        $("#leaderBoardPlane").empty()
         let HTML = ""
         RacersList.forEach(racer => {
             let { racersName, racersAge, racersGender } = racer
             HTML += `<div class="leaderBoardRow"><div class="leaderBoardRow-number">${racersGender}</div><div class="leaderBoardRow-name">${racersName}</div><div class="leaderBoardRow-age">${racersAge}</div></div>`
         });
-        $("#globalBoard").append(HTML);
+        $("#leaderBoardPlane").append(HTML);
 
         //add hmtl to object 
     }
