@@ -57,3 +57,7 @@ body {
 #addRacerForm {
     display: none;
 }
+
+.leaderBoard {
+    display: none;
+}
