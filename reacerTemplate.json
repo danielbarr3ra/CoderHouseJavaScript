@@ -1,5 +1,7 @@
 {
     "name": "racersName",
+    "email": "eamil@gmail.com",
+    "paswword": "password",
     "id": 1,
     "age": "racersAge",
     "gender": "racersGender",
