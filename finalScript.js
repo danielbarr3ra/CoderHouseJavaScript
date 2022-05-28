@@ -17,6 +17,18 @@ $(document).ready(function () {
 
     //helper functions, using arrow functions because work also usses them
 
+    //update leaderboard
+    const updateCurrentLeaderBoard = () => {
+        let HTML = ""
+        RacersList.forEach(racer => {
+            let { racersName, racersAge, racersGender } = racer
+            HTML += `<div class="leaderBoardRow"><div class="leaderBoardRow-number">${racersGender}</div><div class="leaderBoardRow-name">${racersName}</div><div class="leaderBoardRow-age">${racersAge}</div></div>`
+        });
+        $("#globalBoard").append(HTML);
+
+        //add hmtl to object 
+    }
+
     //convert form to json
     const formToJson = (aForm) => {
         const arrayAnswers = $(aForm).serializeArray()
@@ -41,11 +53,11 @@ $(document).ready(function () {
     //click handlers 
     showLeaderBoardBtn.click(function () {
         $("#leaderBoardWrapper").toggle();
-        alert(RacersList)
     });
 
     addRacerBtn.click(function () {
         $("#racerFormWrapper").toggle();
+
     })
 
     // submit form handlers
@@ -54,5 +66,7 @@ $(document).ready(function () {
         const form = $(e.target)
         const racerJson = formToJson(form)
         postRacerToList(racerJson);
+        $("#racerFormWrapper").toggle();
+        updateCurrentLeaderBoard();
     })
 });
