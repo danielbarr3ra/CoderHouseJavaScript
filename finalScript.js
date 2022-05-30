@@ -6,16 +6,16 @@ class Competitions {
     }
 }
 class Racer {
-    constructor(name, age, gender, Competitions) {
+    constructor(name, age, gender, competitions) {
         this.name = name
         this.gender = gender
         this.age = age
-        this.races = races
+        this.competitions = competitions
     }
 }
 class LeaderBoard {
-    constructor(racers) {
-        this.racers = racers
+    constructor() {
+        this.racers = [];
     }
 }
 
