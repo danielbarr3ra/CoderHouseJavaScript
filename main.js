@@ -60,8 +60,9 @@ $(document).ready(function () {
 
 
     //showers, these will display certain dvis when seelcted
-    showLeaderBoardBtn.click(function () {
-        $("#racerFormWrapper").toggle();
+    displayRacesBtn.click(function () {
+        $("#displayRaces").toggle();
+        alert("showing")
     })
 
     addRacerBtn.click(function () {
