@@ -1,8 +1,6 @@
 body {
     margin: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
     background-color: antiquewhite;
@@ -101,6 +99,45 @@ body {
     font-weight: 300;
 
     padding: .25rem;
+}
+
+.racesHubWrapper {
+    display: none;
+    width: 100%;
+}
+
+.racesHub {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.raceCard {
+    background-color: #FFD194;
+    height: 25rem;
+    width: 25rem;
+    padding: 1.1rem;
+    margin: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.raceCard .raceCardImage {
+    background-color: red;
+    height: 15rem;
+}
+
+.raceCard .raceCardInformation {
+    background-color: lightblue;
+    height: 10rem;
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 

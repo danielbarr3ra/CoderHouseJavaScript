@@ -61,11 +61,16 @@ $(document).ready(function () {
 
     //showers, these will display certain dvis when seelcted
     displayRacesBtn.click(function () {
-        $("#displayRaces").toggle();
+        $("#racesHubWrapper").toggle();
         alert("showing")
+        //add refresh animation?
     })
 
     addRacerBtn.click(function () {
+        if ($("#leaderBoardWrapper").css("display") !== "none") {
+            $("#leaderBoardWrapper").toggle();
+            $("#sortingFields").toggle();
+        }
         $("#racerFormWrapper").toggle();
     })
 
