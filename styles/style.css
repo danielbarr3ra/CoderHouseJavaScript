@@ -1,40 +1,155 @@
-.mainPage {
-    background: rgb(63, 94, 251);
-    background: -moz-radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
-    background: -webkit-radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
-    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#3f5efb", endColorstr="#fc466b", GradientType=1);
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    background-color: antiquewhite;
+    justify-content: space-around;
 }
 
-.form-hub {
+.buttonHub {
+    width: 100%;
+    margin: §rem;
     display: flex;
+    flex-direction: row;
     justify-content: center;
+    background-color: antiquewhite;
+}
+
+.pastelButton {
+    margin: 2rem;
+    font-weight: 400;
+    font-size: 20px;
+    letter-spacing: 5px;
+    padding: 10px 40px 13px;
+    background-color: rgb(107, 137, 183);
+    outline: 1px dashed black;
+    outline-offset: 3px;
+    color: aliceblue
+}
+
+
+#racerFormWrapper {
+    display: none;
+}
+
+.pastelForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: aliceblue;
+}
+
+.pastelForm label {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    margin: 1.5rem;
+}
+
+.pastelForm .submitForm {
+    width: 75%;
+    font-size: 15px;
+    margin-top: 2rem;
+    font-weight: 700;
+}
+
+#competitionWrapper {
+    display: none
+}
+
+#addCompetitions {
+    background-color: rgb(221, 88, 88);
+    display: flex;
+    flex-flow: column;
+    flex-wrap: nowrap;
+}
+
+#sortingFields {
+    display: none;
+}
+
+.leaderBoardHub {
+    display: none;
+    width: 100%;
+    border-radius: 3rem;
+
+
+    /* no tengo buen ojo profesora espero no se enoje por usar esta paleta de  ui gradients.com */
+    background: #D1913C;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FFD194, #D1913C);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #FFD194, #D1913C);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+.leaderBoardHeadings {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+}
+
+.leaderBoardRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+
+    padding: .25rem;
+}
+
+.racesHubWrapper {
+    display: none;
+    width: 100%;
+}
+
+.racesHub {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.raceCard {
+    background-color: #FFD194;
+    height: 25rem;
+    width: 25rem;
+    padding: 1.1rem;
+    margin: 1.2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.raceCard img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.raceCard .raceCardImage {
+    background-color: red;
+    height: 15rem;
+}
+
+.raceCard .raceCardInformation {
+    background-color: lightblue;
+    height: 10rem;
+    font-weight: 600;
+    font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     align-items: center;
 }
 
-form {
-    background: rgba(255, 255, 255, 0.137);
-    padding: 1.5em;
-    border-radius: 20px;
-    border-left: 1px solid white;
-    border-top: 1px solid white;
-    backdrop-filter: blur(10px);
-    box-shadow: 20px 20px 40px -6px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    position: relative;
-    transition: all 0.2s ease-in-out;
-}
 
-form label {
+/* .leaderBoardRow .leaderBoardRow-number {
     font-family: 'Roboto', sans-serif;
-    color: white;
-}
-
-
-h1 {
-    font-family: 'Roboto', sans-serif;
-}
-
-#racer {
-    background-color: antiquewhite;
-}
+    font-weight: 400;
+} */

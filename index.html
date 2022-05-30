@@ -5,85 +5,90 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./styles/style.css">
     <title>Racers Compare</title>
 </head>
 
-<body class="mainPage">
-    <header class="leaderboard header">
-        <h1>A local leaderboard</h1>
-        <p>Want to be competitive? join our leader board and compare your monthly milage with the community </p>
-    </header>
-    <div form-hub>
-
-        <form id="racerForm">
-            <h1>Add a Runner or Yourself</h1>
-            <label for="name">Racer's Name:</label>
-            <input type="text" id="name" name="name">
-            <br>
-            <label for="age">Racer's Age:</label>
-            <input type="number" id="age" name="age">
-            <br>
-            <label for="gender">Gender:</label>
-            <input type="text" id="gender" name="gender">
-            <br>
-            <label for="distance">Race Distance:</label>
-            <input type="number" id="distance" name="distance">
-            <br>
-            <label for="time">Race Time:</label>
-            <input type="number" id="time" name="time">
-            <br>
-            <input type="submit" value="Submit" id="submit-racer">
-        </form>
-
-
-        <form id="updateRaceForm">
-            <h1>Update a race</h1>
-            <label for="updateRace">What is the racersID</label>
-            <input type="number" id="updateRaceID" name="updateRaceID">
-            <br>
-            <label for="updateDistance">New Race Distance:</label>
-            <input type="number" id="updateDistance" name="updateDistance">
-            <label for="updateTime">New Race Time:</label>
-            <input type="number" id="updateTime" name="updateTime">
-            <input type="submit" value="Submit" id="submit-newRace">
-        </form>
+<body>
+    <nav>
+        <div class="logo">
+            Logo
+        </div>
+        <div class="links">
+            <a href="./pages/signUp.html">Sign Up to a race!</a>
+        </div>
+    </nav>
+    <div class="buttonHub">
+        <button id="addRacer" class="pastelButton">
+            Add Racer
+        </button>
+        <button id="showLeaderboard" class="pastelButton">
+            Leader Board
+        </button>
     </div>
-
-
-    <div id="leaderboard">
-        <h1>The leaderBoard of memeber is here</h1>
-        <table id="leaderboardTable">
-            <thead>
-                <th>Racer</th>
-                <th>Distance</th>
-                <th>ID</th>
-            </thead>
-            <tbody id="listOfRacers"></tbody>
-        </table>
-    </div>
-    <div id="leader">
-        <h1> here is the leader!</h1>
-        <div id="leaderCard">
+    <div class="formHub">
+        <div id="racerFormWrapper"">
+        <form class= " pastelForm" id="addRacerForm">
+            <label for="racersName">What is your Name?</label>
+            <input type="text" id="racersName" name="racersName">
+            <label for="racersAge">Age</label>
+            <input type="number" min=0 id="racersAge" name="racersAge">
+            <label for="racersGender">Gender</label>
+            <select name="racersGender" id="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+            <label for="raceCategory">race distance</label>
+            <select name="raceCategory" id="raceCategory">
+                <option value=1600>Mile</option>
+                <option value=5000>5 km</option>
+                <option value=10000>10 km</option>
+                <option value=21000>Half Marathon</option>
+                <option value=42000>Marathon</option>
+            </select>
+            <label for="raceTime">finish Time</label>
+            <input type="text" id="raceTime" name="raceTime" placeholder="14:31">
+            <input class="submitForm" type="submit" value="submit" id="submitRacerForm">
+            </form>
         </div>
     </div>
+    <div class="buttonHub" id="sortingFields">
+        <button id="sortPace" class="pastelButton">
+            Sort Racers By time (will be pase)
+        </button>
+        <button id="sortCategory" class="pastelButton">
+            Sort Racers By time (cattegory)
+        </button>
+    </div>
+    <div class=leaderBoardHub id="leaderBoardWrapper">
+        <div class="leaderBoard" id="globalBoard">
+            <div class="leaderBoardHeadings">
+                <div class="leaderBoardRow-number">
+                    #Place
+                </div>
+                <div class="leaderBoardRow-name">
+                    Racers Name
+                </div>
+                <div class="leaderBoardRow-age">
+                    Racers Time
+                </div>
+            </div>
+            <!-- append here -->
+            <div class="leaderBoardRacers" id="leaderBoardPlane">
 
-    <h1>Let see if I can imporeve the look of these with actual cards</h1>
-    <div id="leaderboard-Cards">
-        <div id="headings">
-            <h2>Headings will go here</h2>
-        </div>
-        <div id="racer-rows">
-
+            </div>
         </div>
     </div>
-
-    <script src="./script.js"></script>
+    <script src="./main.js"></script>
 </body>
 
 </html>
