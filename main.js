@@ -17,7 +17,7 @@ class LeaderBoard {
         this.racers.push(aRacer)
     }
     sortByTime() {
-        this.racers.sort((first, second) => first.time > second.time ? -1 : 1); //less is better :D
+        this.racers.sort((first, second) => first.time / first.distance < second.time / second.time ? 1 : -1); //less is better :D
     }
 }
 //static utilities to help convert different units or paces later on
