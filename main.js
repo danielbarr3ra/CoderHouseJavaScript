@@ -125,7 +125,7 @@ $(document).ready(function () {
         listOfRaces.forEach(race => {
             HTML += ` <div class="raceCard" id="raceId-${race.raceID}">
             <div class="raceCardImage">
-                an image for ${race.raceID}
+                <img src = '../img/${race.raceID}.jpeg'>
             </div>
             <div class="raceCardInformation">
                 <div class="raceCardInformationTitle">
