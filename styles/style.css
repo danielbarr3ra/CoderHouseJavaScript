@@ -28,6 +28,10 @@ body {
     color: aliceblue
 }
 
+.pastelButton a {
+    text-decoration: none;
+    color: white;
+}
 
 #racerFormWrapper {
     display: none;
