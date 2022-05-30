@@ -1,21 +1,24 @@
 // using jquery instead
-class Competitions {
-    constructor(distance, time) {
+class Racer {
+    constructor(name, age, gender, distance, time) {
+        this.name = name
+        this.age = age
+        this.gender = gender
         this.distance = distance
         this.time = time
-    }
-}
-class Racer {
-    constructor(name, age, gender, competitions) {
-        this.name = name
-        this.gender = gender
-        this.age = age
-        this.competitions = competitions
     }
 }
 class LeaderBoard {
     constructor() {
         this.racers = [];
+    }
+}
+//static utilities to help convert etc
+class Utilities {
+    static parseTimeToSeconds(time) {
+        const [minutes, seconds] = time.split(':');
+        const totalSeconds = (+minutes) * 60 + (+seconds);
+        return totalSeconds
     }
 }
 
@@ -24,7 +27,7 @@ $(document).ready(function () {
     // var racerRowLeaderBoard = '<div class = "racerRow">';
 
     // storage
-    const RacersList = []
+    const leaderBoard = new LeaderBoard();
 
     // buttons 
     const showLeaderBoardBtn = $("#showLeaderboard");
@@ -32,65 +35,90 @@ $(document).ready(function () {
 
     //forms
     const addRacerForm = $("#addRacerForm")
-    const addComptetitionsForm = $("#addCompetitions")
 
 
-    //helper functions, using arrow functions because work also usses them
 
-    //update leaderboard
-    const updateCurrentLeaderBoard = () => {
-        $("#leaderBoardPlane").empty()
-        let HTML = ""
-        RacersList.forEach(racer => {
-            let { racersName, racersAge, racersGender } = racer
-            HTML += `<div class="leaderBoardRow"><div class="leaderBoardRow-number">${racersGender}</div><div class="leaderBoardRow-name">${racersName}</div><div class="leaderBoardRow-age">${racersAge}</div></div>`
-        });
-        $("#leaderBoardPlane").append(HTML);
 
-        //add hmtl to object 
-    }
-
-    //convert form to json
-    const formToJson = (aForm) => {
-        const arrayAnswers = $(aForm).serializeArray()
-        const jsonObject = {}
-        //jquery for each eleemnt
-        $.each(arrayAnswers, function () {
-            jsonObject[this.name] = this.value || "";
-        });
-        return jsonObject
-    }
-
-    //submit runner object to database
-    const postRacerToList = (aRacer) => {
-        RacersList.push(aRacer);
-    }
-
-    //might neeed later
-    const getRacerFromList = (aRacersName) => {
-
-    }
-
-    //click handlers 
-    showLeaderBoardBtn.click(function () {
-        $("#leaderBoardWrapper").toggle();
-    });
-
+    //show form
     addRacerBtn.click(function () {
         $("#racerFormWrapper").toggle();
 
     })
-
-    // submit form handlers
     addRacerForm.on("submit", function (e) {
         e.preventDefault();
-        const form = $(e.target)
-        const racerJson = formToJson(form)
-        postRacerToList(racerJson);
+        const answers = $(e.target)
+        collectRacerForm(answers);
         $("#racerFormWrapper").toggle();
-        $("#competitionWrapper").toggle();
 
         //updateCurrentLeaderBoard();
 
     })
+
+
+    const collectRacerForm = (aForm) => {
+        const arrayAnswers = $(aForm).serializeArray()
+        let time = Utilities.parseTimeToSeconds(arrayAnswers[4].value)
+        const aRacer = new Racer(arrayAnswers[0].value, arrayAnswers[1].value, arrayAnswers[2].value, arrayAnswers[3].value, time)
+        return aRacer
+    }
+
+
+    // //helper functions, using arrow functions because work also usses them
+
+    // //update leaderboard
+    // const updateCurrentLeaderBoard = () => {
+    //     $("#leaderBoardPlane").empty()
+    //     let HTML = ""
+    //     RacersList.forEach(racer => {
+    //         let { racersName, racersAge, racersGender } = racer
+    //         HTML += `<div class="leaderBoardRow"><div class="leaderBoardRow-number">${racersGender}</div><div class="leaderBoardRow-name">${racersName}</div><div class="leaderBoardRow-age">${racersAge}</div></div>`
+    //     });
+    //     $("#leaderBoardPlane").append(HTML);
+
+    //     //add hmtl to object 
+    // }
+
+    // //convert form to json
+    // const formToJson = (aForm) => {
+    //     const arrayAnswers = $(aForm).serializeArray()
+    //     const jsonObject = {}
+    //     //jquery for each eleemnt
+    //     $.each(arrayAnswers, function () {
+    //         jsonObject[this.name] = this.value || "";
+    //     });
+    //     return jsonObject
+    // }
+
+    // //submit runner object to database
+    // const postRacerToList = (aRacer) => {
+    //     RacersList.push(aRacer);
+    // }
+
+    // //might neeed later
+    // const getRacerFromList = (aRacersName) => {
+
+    // }
+
+    // //click handlers 
+    // showLeaderBoardBtn.click(function () {
+    //     $("#leaderBoardWrapper").toggle();
+    // });
+
+    // addRacerBtn.click(function () {
+    //     $("#racerFormWrapper").toggle();
+
+    // })
+
+    // // submit form handlers
+    // addRacerForm.on("submit", function (e) {
+    //     e.preventDefault();
+    //     const form = $(e.target)
+    //     const racerJson = formToJson(form)
+    //     postRacerToList(racerJson);
+    //     $("#racerFormWrapper").toggle();
+    //     $("#competitionWrapper").toggle();
+
+    //     //updateCurrentLeaderBoard();
+
+    // })
 });
