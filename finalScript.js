@@ -9,8 +9,8 @@ class Racer {
     }
 }
 class LeaderBoard {
-    constructor() {
-        this.racers = [];
+    constructor(racerList) {
+        this.racers = racerList;
     }
     addRacer(aRacer) {
         this.racers.push(aRacer)
@@ -26,7 +26,7 @@ class Utilities {
 }
 
 $(document).ready(function () {
-    let globalBoard = localStorage.getItem('globalBoard') !== null ? JSON.parse(localStorage.getItem('globalBoard')) : new LeaderBoard();
+    let globalBoard = localStorage.getItem('globalBoard') !== null ? new LeaderBoard(JSON.parse(localStorage.getItem('globalBoard')).racers) : new LeaderBoard([]);
 
     // buttons 
     const showLeaderBoardBtn = $("#showLeaderboard");
