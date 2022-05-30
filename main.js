@@ -63,11 +63,7 @@ $(document).ready(function () {
     displayRacesBtn.click(function () {
         $("#racesHubWrapper").toggle();
         alert("showing")
-        List = ajaxTest()
-        console.log(List);
-        alert(List)
-        //add refresh animation?
-
+        loadRacesFromJson()
     })
 
     addRacerBtn.click(function () {
@@ -123,23 +119,32 @@ $(document).ready(function () {
         $("#leaderBoardPlane").append(HTML);
     }
 
-
-    //AJAX
-    function ajaxTest() {
-        let racesList = [];
-
-        $.ajax({
-            //since this is called inside the pages you gotta go to the ..data/ folder
-            url: "../data/races.json",
-            dataType: "json",
-            success: function (data) {
-                data.forEach((race) => {
-                    racesList.push(race)
-                })
-            }
+    const updateRacesBoardHTML = (listOfRaces) => {
+        $("#racesHub").empty()
+        let HTML = ""
+        listOfRaces.forEach(race => {
+            HTML += `<h1> hey the function was successfull </h1>`
         })
-        return racesList;
+        $("#racesHub").append(HTML)
     }
 
-    ajaxTest();
+
+    //fetch ajax
+    function loadRacesFromJson() {
+        fetch('../data/races.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("HTTP error " + response.status);
+                }
+                return response.json();
+            })
+            .then(json => {
+                //succesfull, load new coards?
+                updateRacesBoardHTML(json)
+                //console.log(this.users);
+            })
+            .catch(function () {
+                alert("error")
+            })
+    }
 });
