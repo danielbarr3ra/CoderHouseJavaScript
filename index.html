@@ -14,21 +14,40 @@
     <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- another library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+
     <link rel="stylesheet" href="./styles/style.css">
     <title>Racers Compare</title>
 </head>
 
 <body>
+    <form id="login-form" class="modal">
+        Welcome to Runner world! here you will be able to share and sign up to different races with the world running
+        community.
+    </form>
     <div class="buttonHub">
+
+        <a href="#login-form" rel="modal:open">
+            <button id="aboutUS" class="pastelButton">
+                About us
+            </button>
+        </a>
+
         <button id="addRacer" class="pastelButton">
             Add Racer
         </button>
         <button id="showLeaderboard" class="pastelButton">
             Leader Board
         </button>
-        <button class="pastelButton">
-            <a href="./pages/signUp.html">Sign Up to a race!</a>
-        </button>
+
+        <a href="./pages/signUp.html">
+            <button class="pastelButton">
+                Sign Up to a race!
+            </button>
+        </a>
     </div>
     <div class="formHub">
         <div id="racerFormWrapper"">
@@ -58,7 +77,7 @@
     </div>
     <div class="buttonHub" id="sortingFields">
         <button id="sortPace" class="pastelButton">
-            Sort Racers By time (will be pase)
+            Sort Racers By pace
         </button>
         <button id="sortCategory" class="pastelButton">
             Sort Racers By time (cattegory)
@@ -83,6 +102,7 @@
             </div>
         </div>
     </div>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="./main.js"></script>
 </body>
 

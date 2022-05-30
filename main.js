@@ -62,7 +62,6 @@ $(document).ready(function () {
     //showers, these will display certain dvis when seelcted
     displayRacesBtn.click(function () {
         $("#racesHubWrapper").toggle();
-        alert("showing")
         loadRacesFromJson()
     })
 
@@ -76,7 +75,15 @@ $(document).ready(function () {
 
     showLeaderBoardBtn.click(function () {
         if ($("#racerFormWrapper").css("display") !== "none") {
-            alert("gotta finish submitting racer")
+            Swal.fire({
+                title: 'Hold on there buckaroo finish that racer form?',
+                text: "to see your leaderboard you gotta add a race!",
+                icon: 'warning',
+                showCancelButton: false,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Got it boss'
+            })
         } else {
             $("#sortingFields").toggle();
             $("#leaderBoardWrapper").toggle();
@@ -87,7 +94,6 @@ $(document).ready(function () {
     //event handlesrs
     sortPaceBtn.click(function () {
         globalBoard.sortByTime();
-        alert("sorting")
         updateLeaderBoardHTML();
     })
 
