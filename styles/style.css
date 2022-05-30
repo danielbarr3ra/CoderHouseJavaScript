@@ -4,6 +4,7 @@ body {
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
     background-color: antiquewhite;
+    justify-content: space-around;
 }
 
 .buttonHub {
@@ -26,6 +27,7 @@ body {
     outline-offset: 3px;
     color: aliceblue
 }
+
 
 #racerFormWrapper {
     display: none;
