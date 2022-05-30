@@ -12,6 +12,9 @@ class LeaderBoard {
     constructor() {
         this.racers = [];
     }
+    addRacer(aRacer) {
+        this.racers.push(aRacer)
+    }
 }
 //static utilities to help convert etc
 class Utilities {
@@ -27,7 +30,7 @@ $(document).ready(function () {
     // var racerRowLeaderBoard = '<div class = "racerRow">';
 
     // storage
-    const leaderBoard = new LeaderBoard();
+    const globalBoard = new LeaderBoard();
 
     // buttons 
     const showLeaderBoardBtn = $("#showLeaderboard");
@@ -39,19 +42,26 @@ $(document).ready(function () {
 
 
 
-    //show form
+    //showers
     addRacerBtn.click(function () {
         $("#racerFormWrapper").toggle();
 
     })
+
+    showLeaderBoardBtn.click(function () {
+        $("#leaderBoardWrapper").toggle();
+        updateLeaderBoardHTML()
+        alert(globalBoard)
+        console.log(globalBoard)
+    });
+
+    //event handlesrs
     addRacerForm.on("submit", function (e) {
         e.preventDefault();
         const answers = $(e.target)
-        collectRacerForm(answers);
+        newRacer = collectRacerForm(answers);
+        globalBoard.addRacer(newRacer);
         $("#racerFormWrapper").toggle();
-
-        //updateCurrentLeaderBoard();
-
     })
 
 
@@ -63,6 +73,17 @@ $(document).ready(function () {
     }
 
 
+    const updateLeaderBoardHTML = () => {
+        $("#leaderBoardPlane").empty()
+        let HTML = ""
+        let place = 0;
+        globalBoard.racers.forEach(racer => {
+            let { name, age, gender, distance, time } = racer
+            HTML += `<div class="leaderBoardRow"><div class="leaderBoardRow-number">${++place}</div><div class="leaderBoardRow-name">${name}</div><div class="leaderBoardRow-age">${time}</div></div>`
+        });
+        $("#leaderBoardPlane").append(HTML);
+
+    }
     // //helper functions, using arrow functions because work also usses them
 
     // //update leaderboard
