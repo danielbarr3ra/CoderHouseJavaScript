@@ -123,7 +123,23 @@ $(document).ready(function () {
         $("#racesHub").empty()
         let HTML = ""
         listOfRaces.forEach(race => {
-            HTML += `<h1> hey the function was successfull </h1>`
+            HTML += ` <div class="raceCard" id="raceId-${race.raceID}">
+            <div class="raceCardImage">
+                an image for ${race.raceID}
+            </div>
+            <div class="raceCardInformation">
+                <div class="raceCardInformationTitle">
+                ${race.raceName}
+                </div>
+                <div class="raceCardInformationSpots">
+                    there are currently ${race.currentSpots} spots left
+                </div>
+                <div class="raceCardInformationSignUp">
+                    sign up for ${race.racePrice} dollars
+                </div>
+
+            </div>
+        </div>`
         })
         $("#racesHub").append(HTML)
     }
