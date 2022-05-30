@@ -15,6 +15,9 @@ class LeaderBoard {
     addRacer(aRacer) {
         this.racers.push(aRacer)
     }
+    sortByTime() {
+        this.racers.sort((first, second) => first.time > second.time ? 1 : -1);
+    }
 }
 //static utilities to help convert etc
 class Utilities {
@@ -31,7 +34,7 @@ $(document).ready(function () {
     // buttons 
     const showLeaderBoardBtn = $("#showLeaderboard");
     const addRacerBtn = $("#addRacer");
-
+    const sortPaceBtn = $("#sortPace");
     //forms
     const addRacerForm = $("#addRacerForm")
 
@@ -45,13 +48,18 @@ $(document).ready(function () {
     })
 
     showLeaderBoardBtn.click(function () {
+        $("#sortingFields").toggle();
         $("#leaderBoardWrapper").toggle();
         updateLeaderBoardHTML()
-        alert(globalBoard)
-        console.log(globalBoard)
     });
 
     //event handlesrs
+    sortPaceBtn.click(function () {
+        globalBoard.sortByTime();
+        alert("sorting")
+        updateLeaderBoardHTML();
+    })
+
     addRacerForm.on("submit", function (e) {
         e.preventDefault();
         const answers = $(e.target)

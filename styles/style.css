@@ -5,11 +5,12 @@ body {
     align-items: center;
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
+    background-color: antiquewhite;
 }
 
 .buttonHub {
     width: 100%;
-    margin: 2rem;
+    margin: §rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -62,6 +63,10 @@ body {
     display: flex;
     flex-flow: column;
     flex-wrap: nowrap;
+}
+
+#sortingFields {
+    display: none;
 }
 
 .leaderBoardHub {
