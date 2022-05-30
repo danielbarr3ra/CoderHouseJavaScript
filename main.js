@@ -63,7 +63,11 @@ $(document).ready(function () {
     displayRacesBtn.click(function () {
         $("#racesHubWrapper").toggle();
         alert("showing")
+        List = ajaxTest()
+        console.log(List);
+        alert(List)
         //add refresh animation?
+
     })
 
     addRacerBtn.click(function () {
@@ -113,7 +117,7 @@ $(document).ready(function () {
         let HTML = ""
         let place = 0;
         globalBoard.racers.forEach(racer => {
-            let { name, age, gender, distance, time, pace } = racer
+            let { name, pace } = racer //destructoring object
             HTML += `<div class="leaderBoardRow"><div class="leaderBoardRow-number">${++place}</div><div class="leaderBoardRow-name">${name}</div><div class="leaderBoardRow-age">${pace}</div></div>`
         });
         $("#leaderBoardPlane").append(HTML);
@@ -122,15 +126,19 @@ $(document).ready(function () {
 
     //AJAX
     function ajaxTest() {
-        let racesList = "";
+        let racesList = [];
 
         $.ajax({
-            url: "./data/races.json",
-            dataType: "jsonp",
-            success: function (json) {
-                alert(racesList)
+            //since this is called inside the pages you gotta go to the ..data/ folder
+            url: "../data/races.json",
+            dataType: "json",
+            success: function (data) {
+                data.forEach((race) => {
+                    racesList.push(race)
+                })
             }
         })
+        return racesList;
     }
 
     ajaxTest();
