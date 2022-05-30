@@ -17,14 +17,23 @@ class LeaderBoard {
         this.racers.push(aRacer)
     }
     sortByTime() {
-        this.racers.sort((first, second) => first.time > second.time ? 1 : -1);
+        this.racers.sort((first, second) => first.time > second.time ? -1 : 1); //less is better :D
     }
 }
 //static utilities to help convert different units or paces later on
 class Utilities {
     static parseTimeToSeconds(time) {
-        const [minutes, seconds] = time.split(':');
-        const totalSeconds = (+minutes) * 60 + (+seconds);
+        let totalSeconds
+        if (time.split(':').length === 2) {
+            const [minutes, seconds] = time.split(':');
+            totalSeconds = (+minutes) * 60 + (+seconds);
+        } else if (time.split(':').length === 3) {
+            const [hours, minutes, seconds] = time.split(':');
+            totalSeconds = (+hours) * 60 * 60 + (+minutes) * 60 + (+seconds);
+        } else {
+            alert('wrong error in time format')
+        }
+
         return totalSeconds
     }
     static paceMinPerKm(seconds, meters) {

@@ -1,0 +1,44 @@
+[
+    {
+        "raceID": 121,
+        "raceName": "Mexico 2022 Marathon",
+        "raceDistance": 42000,
+        "currentSpots": 700,
+        "racePrice": 50
+    },
+    {
+        "raceID": 121,
+        "raceName": "Monterrey Half Marathon 2022",
+        "raceDistance": 21000,
+        "currentSpots": 500,
+        "racePrice": 50
+    },
+    {
+        "raceID": 121,
+        "raceName": "Austin 10k 2022",
+        "raceDistance": 10,
+        "currentSpots": 250,
+        "racePrice": 15
+    },
+    {
+        "raceID": 121,
+        "raceName": "Dallas 5k Easter Run",
+        "raceDistance": 42000,
+        "currentSpots": 700,
+        "racePrice": 14
+    },
+    {
+        "raceID": 121,
+        "raceName": "Athletic Meet Coloroado 2022",
+        "raceDistance": 1600,
+        "currentSpots": 300,
+        "racePrice": 20
+    },
+    {
+        "raceID": 121,
+        "raceName": "Berlin 2022 Marathon",
+        "raceDistance": 42000,
+        "currentSpots": 1000,
+        "racePrice": 100
+    }
+]
