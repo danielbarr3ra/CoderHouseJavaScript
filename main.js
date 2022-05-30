@@ -1,4 +1,4 @@
-// classes used for the social media app.
+// classes used to model constant objects throughtout the app
 class Racer {
     constructor(name, age, gender, distance, time) {
         this.name = name
@@ -17,10 +17,10 @@ class LeaderBoard {
         this.racers.push(aRacer)
     }
     sortByTime() {
-        this.racers.sort((first, second) => first.time / first.distance < second.time / second.time ? 1 : -1); //less is better :D
+        this.racers.sort((first, second) => first.time / first.distance < second.time / second.time ? 1 : -1); //sorting for the fastest pace (lower fractions)
     }
 }
-//static utilities to help convert different units or paces later on
+//static methods utilities to help convert different units or paces later on
 class Utilities {
     static parseTimeToSeconds(time) {
         let totalSeconds
@@ -59,7 +59,7 @@ $(document).ready(function () {
     const addRacerForm = $("#addRacerForm")
 
 
-    //showers, these will display certain dvis when seelcted
+    //showers, these will display certain divs when seelcted
     displayRacesBtn.click(function () {
         $("#racesHubWrapper").toggle();
         loadRacesFromJson()
