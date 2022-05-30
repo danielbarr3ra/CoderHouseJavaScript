@@ -1,4 +1,23 @@
 // using jquery instead
+class Competitions {
+    constructor(distance, time) {
+        this.distance = distance
+        this.time = time
+    }
+}
+class Racer {
+    constructor(name, age, gender, Competitions) {
+        this.name = name
+        this.gender = gender
+        this.age = age
+        this.races = races
+    }
+}
+class LeaderBoard {
+    constructor(racers) {
+        this.racers = racers
+    }
+}
 
 $(document).ready(function () {
     // helpufl html for cards
