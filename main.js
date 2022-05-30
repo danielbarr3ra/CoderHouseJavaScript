@@ -58,9 +58,13 @@ $(document).ready(function () {
     })
 
     showLeaderBoardBtn.click(function () {
-        $("#sortingFields").toggle();
-        $("#leaderBoardWrapper").toggle();
-        updateLeaderBoardHTML()
+        if ($("#racerFormWrapper").css("display") !== "none") {
+            alert("gotta finish submitting racer")
+        } else {
+            $("#sortingFields").toggle();
+            $("#leaderBoardWrapper").toggle();
+            updateLeaderBoardHTML()
+        }
     });
 
     //event handlesrs
