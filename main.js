@@ -51,6 +51,7 @@ $(document).ready(function () {
     let globalBoard = localStorage.getItem('globalBoard') !== null ? new LeaderBoard(JSON.parse(localStorage.getItem('globalBoard')).racers) : new LeaderBoard([]);
 
     // buttons 
+    const displayRacesBtn = $("#displayRaces");
     const showLeaderBoardBtn = $("#showLeaderboard");
     const addRacerBtn = $("#addRacer");
     const sortPaceBtn = $("#sortPace");
@@ -58,12 +59,13 @@ $(document).ready(function () {
     const addRacerForm = $("#addRacerForm")
 
 
-
-
     //showers, these will display certain dvis when seelcted
+    showLeaderBoardBtn.click(function () {
+        $("#racerFormWrapper").toggle();
+    })
+
     addRacerBtn.click(function () {
         $("#racerFormWrapper").toggle();
-
     })
 
     showLeaderBoardBtn.click(function () {
@@ -92,8 +94,7 @@ $(document).ready(function () {
         localStorage.setItem("globalBoard", JSON.stringify(globalBoard));
     })
 
-    // helper functions
-
+    // form functions
     const collectRacerForm = (aForm) => {
         const arrayAnswers = $(aForm).serializeArray()
         let time = Utilities.parseTimeToSeconds(arrayAnswers[4].value)
@@ -110,6 +111,21 @@ $(document).ready(function () {
             HTML += `<div class="leaderBoardRow"><div class="leaderBoardRow-number">${++place}</div><div class="leaderBoardRow-name">${name}</div><div class="leaderBoardRow-age">${pace}</div></div>`
         });
         $("#leaderBoardPlane").append(HTML);
-
     }
+
+
+    //AJAX
+    function ajaxTest() {
+        let racesList = "";
+
+        $.ajax({
+            url: "./data/races.json",
+            dataType: "jsonp",
+            success: function (json) {
+                alert(racesList)
+            }
+        })
+    }
+
+    ajaxTest();
 });
